@@ -31,8 +31,13 @@
         <p class="navbar-item">
           <nuxt-link 
             to="/add/artikel" 
-            class="button is-info">+ artikel</nuxt-link>
+            class="button is-info">+ Artikel</nuxt-link>
         </p>
+        <p class="navbar-item">
+          <nuxt-link 
+            class="button is-info" 
+            to="/add/autor">+ Autor</nuxt-link>
+        </p> 
        
 
         <div class="navbar-item has-dropdown is-hoverable">
@@ -43,6 +48,9 @@
           <div class="navbar-dropdown">
             <a class="navbar-item">
               <nuxt-link to="/defaults/artikel">Artikel</nuxt-link>
+            </a>
+            <a class="navbar-item">
+              <nuxt-link to="/defaults/autor">autor</nuxt-link>
             </a>
             
           </div>
@@ -55,6 +63,9 @@
           <div class="navbar-dropdown">
             <a class="navbar-item">
               <nuxt-link to="/list/artikel">Artikel</nuxt-link>
+            </a>
+            <a class="navbar-item">
+              <nuxt-link to="/list/autor">autor</nuxt-link>
             </a>
             
           </div>
