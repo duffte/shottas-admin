@@ -176,6 +176,15 @@
                 v-model="css.pattern" 
                 type="text" 
                 class="input">
+              <div class="field">
+                <label>Show Contact?</label>
+                <b-switch 
+                  v-model="css.showContact"
+                  true-value="Yes"
+                  false-value="No">
+                  {{ showContact }}
+                </b-switch>
+              </div>
               <label>card background</label>
               <input 
                 v-model="css.card.background" 
@@ -186,7 +195,7 @@
                 v-model="css.card.color" 
                 type="text" 
                 class="input">
-              <label>card text color</label>
+              <label>card elevation</label>
               <input 
                 v-model="css.card.elevation" 
                 type="number" 
@@ -298,7 +307,21 @@ export default {
       id: '',
       data: [],
       blocks: [],
-      css: {},
+      css: {
+        appbarbackground: '#000',
+        appbarcolor: '#fff',
+        background: '#ffff00',
+        content: '#fff',
+        text: '#000',
+        elevation: '1',
+        pattern: '',
+        showContact: true,
+        card: {
+          background: '#fff',
+          color: '#000',
+          elevation: '0'
+        }
+      },
       sheet: [],
       author: [],
       stoffe: [],
