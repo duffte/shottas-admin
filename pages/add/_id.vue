@@ -139,66 +139,59 @@
           <div class="column">
 
             <div class="column">
-              <h1 class="title">Blocks</h1>
+              <h1 class="title">CSS</h1>
 
-              <ul class>
-                <li 
-                  v-for="(css, index) in sheet" 
-                  :key="index" 
-                  class="box">
-                  <label>appbar background</label>
-                  <input 
-                    v-model="css.appbarbackground" 
-                    type="text" 
-                    class="input">
-                  <label>appbar text color</label>
-                  <input 
-                    v-model="css.appbarcolor" 
-                    type="text" 
-                    class="input">
-                  <label>page background</label>
-                  <input 
-                    v-model="css.background" 
-                    type="text" 
-                    class="input">
-                  <label>content card background</label>
-                  <input 
-                    v-model="css.content" 
-                    type="text" 
-                    class="input">
-                  <label>text color</label>
-                  <input 
-                    v-model="css.text" 
-                    type="text" 
-                    class="input"> 
-                  <label>card elevation</label>
-                  <input 
-                    v-model="css.elevation" 
-                    type="number" 
-                    class="input">
-                  <label>pattern</label>
-                  <input 
-                    v-model="css.pattern" 
-                    type="text" 
-                    class="input">
-                  <label>card background</label>
-                  <input 
-                    v-model="css.card.background" 
-                    type="text" 
-                    class="input">
-                  <label>card text color</label>
-                  <input 
-                    v-model="css.card.color" 
-                    type="text" 
-                    class="input">
-                  <label>card text color</label>
-                  <input 
-                    v-model="css.card.elevation" 
-                    type="number" 
-                    class="input">
-                  <hr>
-                </li>
-              </ul>
+              <label>appbar background</label>
+              <input 
+                v-model="css.appbarbackground" 
+                type="text" 
+                class="input">
+              <label>appbar text color</label>
+              <input 
+                v-model="css.appbarcolor" 
+                type="text" 
+                class="input">
+              <label>page background</label>
+              <input 
+                v-model="css.background" 
+                type="text" 
+                class="input">
+              <label>content card background</label>
+              <input 
+                v-model="css.content" 
+                type="text" 
+                class="input">
+              <label>text color</label>
+              <input 
+                v-model="css.text" 
+                type="text" 
+                class="input"> 
+              <label>card elevation</label>
+              <input 
+                v-model="css.elevation" 
+                type="number" 
+                class="input">
+              <label>pattern</label>
+              <input 
+                v-model="css.pattern" 
+                type="text" 
+                class="input">
+              <label>card background</label>
+              <input 
+                v-model="css.card.background" 
+                type="text" 
+                class="input">
+              <label>card text color</label>
+              <input 
+                v-model="css.card.color" 
+                type="text" 
+                class="input">
+              <label>card text color</label>
+              <input 
+                v-model="css.card.elevation" 
+                type="number" 
+                class="input">
+              <hr>
               <hr>
               <!--css!-->
               <h1 class="title">Blocks</h1>
