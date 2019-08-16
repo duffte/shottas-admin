@@ -13,26 +13,27 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/markdownit": "^1.2.3",
-    "consola": "^2.4.1",
+    "@nuxtjs/markdownit": "^1.2.6",
+    "consola": "^2.10.1",
     "cross-env": "^5.2.0",
-    "express": "^4.16.3",
-    "firebase": "^5.8.3",
-    "nuxt": "^2.4.3",
+    "express": "^4.17.1",
+    "firebase": "^5.11.1",
+    "nuxt": "^2.8.1",
     "nuxt-buefy": "^0.3.3",
     "simplemde": "^1.11.2",
     "vue-markdown": "^2.2.4",
     "vue-simplemde": "^0.5.1",
-    "vuedraggable": "^2.17.0"
+    "vuedraggable": "^2.23.0",
+    "core-js": "^2.6.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^5.14.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^3.6.0",
-    "eslint-loader": "^2.1.2",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-prettier": "2.6.2",
     "eslint-plugin-vue": "^4.0.0",
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.19.1",
     "prettier": "1.14.3"
   }
 }

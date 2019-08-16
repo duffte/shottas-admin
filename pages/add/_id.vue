@@ -261,7 +261,7 @@
                     v-model="block.caption" 
                     type="text" 
                     class="input">
-                    <label>Cols Width</label>
+                  <label>Cols Width</label>
                   <input 
                     v-model="block.col" 
                     type="text" 
