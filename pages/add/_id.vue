@@ -298,6 +298,7 @@ export default {
       id: '',
       data: [],
       blocks: [],
+      css: {},
       sheet: [],
       author: [],
       stoffe: [],
@@ -463,7 +464,7 @@ export default {
       const ref = fireDb.collection(this.$route.params.id).doc(this.document.id)
 
       const document = {
-        css: this.sheet,
+        css: this.css,
         data: this.document,
         blocks: this.blocks,
         wirkstoffe: this.stoffe
