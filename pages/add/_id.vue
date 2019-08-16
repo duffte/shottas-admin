@@ -107,51 +107,6 @@
                 >{{ document[item.name] }}</b-switch>
               </b-field>
 
-              <!-- symptom -->
-              <b-field v-if="item.type == 'symptom'">
-                <b-field>
-                  <b-autocomplete
-                    v-model="selected[item.name]"
-                    :data="symptom"
-                    :open-on-focus="openOnFocus"
-                    :keep-first="keepFirst"
-                    placeholder="e.g. Müdigkeit"
-                    field="symptomName"
-                    @select="option => document[item.name] = option"
-                  />
-                </b-field>
-              </b-field>
-
-              <!-- wirkstoff -->
-              <b-field v-if="item.type == 'wirkstoff'">
-                <b-field>
-                  <b-autocomplete
-                    v-model="selected[item.name]"
-                    :data="wirkstoff"
-                    :open-on-focus="openOnFocus"
-                    :keep-first="keepFirst"
-                    placeholder="e.g. Zink"
-                    field="wirkstoffName"
-                    @select="option => document[item.name] = option"
-                  />
-                </b-field>
-              </b-field>
-
-              <!-- prozess -->
-              <b-field v-if="item.type == 'prozess'">
-                <b-field>
-                  <b-autocomplete
-                    v-model="selected[item.name]"
-                    :data="wirkstoff"
-                    :open-on-focus="openOnFocus"
-                    :keep-first="keepFirst"
-                    placeholder="e.g. Zellstoffwechsel"
-                    field="prozessName"
-                    @select="option => document[item.name] = option"
-                  />
-                </b-field>
-              </b-field>
-
               <!-- Author -->
               <b-field v-if="item.type == 'author'">
                 <b-field>
@@ -168,19 +123,6 @@
               </b-field>
 
               <!-- typ -->
-              <b-field v-if="item.type == 'wirkstofftyp'">
-                <b-field>
-                  <b-autocomplete
-                    v-model="selected[item.name]"
-                    :data="wirkstofftyp"
-                    :open-on-focus="openOnFocus"
-                    :keep-first="keepFirst"
-                    placeholder="e.g. Vitamin"
-                    field="wirkstofftypName"
-                    @select="option => document[item.name] = option"
-                  />
-                </b-field>
-              </b-field>
             </b-field>
 
             <br>
@@ -195,96 +137,160 @@
           </div>
 
           <div class="column">
-            <h1 class="title">Blocks</h1>
 
-            <ul class>
-              <li 
-                v-for="(block, index) in blocks" 
-                :key="index" 
-                class="box">
-                <div v-if="block.type == 'text'">
-                  <h3 class="title is-5">
-                    Paragraph
-                    <button 
-                      class="delete" 
-                      @click="deleteBlock(index)">x</button>
-                  </h3>
-                  <label>Text</label>
-                  <no-ssr>
-                    <markdown-editor 
-                      ref="markdownEditor" 
-                      v-model="block.content"/>
-                  </no-ssr>
+            <div class="column">
+              <h1 class="title">Blocks</h1>
+
+              <ul class>
+                <li 
+                  v-for="(css, index) in sheet" 
+                  :key="index" 
+                  class="box">
+                  <label>appbar background</label>
+                  <input 
+                    v-model="css.appbarbackground" 
+                    type="text" 
+                    class="input">
+                  <label>appbar text color</label>
+                  <input 
+                    v-model="css.appbarcolor" 
+                    type="text" 
+                    class="input">
+                  <label>page background</label>
+                  <input 
+                    v-model="css.background" 
+                    type="text" 
+                    class="input">
+                  <label>content card background</label>
+                  <input 
+                    v-model="css.content" 
+                    type="text" 
+                    class="input">
+                  <label>text color</label>
+                  <input 
+                    v-model="css.text" 
+                    type="text" 
+                    class="input"> 
+                  <label>card elevation</label>
+                  <input 
+                    v-model="css.elevation" 
+                    type="number" 
+                    class="input">
+                  <label>pattern</label>
+                  <input 
+                    v-model="css.pattern" 
+                    type="text" 
+                    class="input">
+                  <label>card background</label>
+                  <input 
+                    v-model="css.card.background" 
+                    type="text" 
+                    class="input">
+                  <label>card text color</label>
+                  <input 
+                    v-model="css.card.color" 
+                    type="text" 
+                    class="input">
+                  <label>card text color</label>
+                  <input 
+                    v-model="css.card.elevation" 
+                    type="number" 
+                    class="input">
                   <hr>
-                </div>
-                <div v-if="block.type == 'image'">
-                  <h3 class="title is-5">
-                    Image
-                    <button 
-                      class="delete" 
-                      @click="deleteBlock(index)">x</button>
-                  </h3>
-                  <div>
-                    <button 
-                      v-if="!uploadEnd && !uploading" 
-                      @click="selectFile">Upload an image</button>
-                    <input
-                      id="files"
-                      ref="uploadInput"
-                      :multiple="false"
-                      type="file"
-                      name="file"
-                      accept="image/*"
-                      @change="detectFiles($event)"
-                    >
-                    <progress
-                      v-if="uploading && !uploadEnd"
-                      :value="progressUpload"
-                    >{{ progressUpload }}%</progress>
-                    <img 
-                      v-if="uploadEnd" 
-                      :src="downloadURL" 
-                      width="100%">
-                    <div v-if="uploadEnd">
+                </li>
+              </ul>
+              <hr>
+              <!--css!-->
+              <h1 class="title">Blocks</h1>
+
+              <ul class>
+                <li 
+                  v-for="(block, index) in blocks" 
+                  :key="index" 
+                  class="box">
+                  <div v-if="block.type == 'text'">
+                    <h3 class="title is-5">
+                      Paragraph
                       <button 
-                        class="button" 
-                        @click="deleteImage()">Delete</button>
-                    </div>
+                        class="delete" 
+                        @click="deleteBlock(index)">x</button>
+                    </h3>
+                    <label>Text</label>
+                    <no-ssr>
+                      <markdown-editor 
+                        ref="markdownEditor" 
+                        v-model="block.content"/>
+                    </no-ssr>
+                    <hr>
                   </div>
-                  <label>Source</label>
-                  <input 
-                    v-model="block.src" 
-                    type="text" 
-                    class="input">
-                  <label>Caption</label>
-                  <input 
-                    v-model="block.caption" 
-                    type="text" 
-                    class="input">
-                  <label>Cols Width</label>
-                  <input 
-                    v-model="block.col" 
-                    type="text" 
-                    class="input">
-                  <hr>
-                </div>
-              </li>
-            </ul>
-            <hr>
-            <b-field grouped>
-              <button 
-                class="button" 
-                @click="addBlock()">Add new Text</button>
-              <button 
-                class="button" 
-                @click="addImage()">Add new Image</button>
-            </b-field>
+                  <div v-if="block.type == 'image'">
+                    <h3 class="title is-5">
+                      Image
+                      <button 
+                        class="delete" 
+                        @click="deleteBlock(index)">x</button>
+                    </h3>
+                    <div>
+                      <button 
+                        v-if="!uploadEnd && !uploading" 
+                        @click="selectFile">Upload an image</button>
+                      <input
+                        id="files"
+                        ref="uploadInput"
+                        :multiple="false"
+                        type="file"
+                        name="file"
+                        accept="image/*"
+                        @change="detectFiles($event)"
+                      >
+                      <progress
+                        v-if="uploading && !uploadEnd"
+                        :value="progressUpload"
+                      >{{ progressUpload }}%</progress>
+                      <img 
+                        v-if="uploadEnd" 
+                        :src="downloadURL" 
+                        width="100%">
+                      <div v-if="uploadEnd">
+                        <button 
+                          class="button" 
+                          @click="deleteImage()">Delete</button>
+                      </div>
+                    </div>
+                    <label>Source</label>
+                    <input 
+                      v-model="block.src" 
+                      type="text" 
+                      class="input">
+                    <label>Caption</label>
+                    <input 
+                      v-model="block.caption" 
+                      type="text" 
+                      class="input">
+                    <label>Cols Width</label>
+                    <input 
+                      v-model="block.col" 
+                      type="text" 
+                      class="input">
+                    <hr>
+                  </div>
+                </li>
+              </ul>
+              <hr>
+              <b-field grouped>
+                <button 
+                  class="button" 
+                  @click="addBlock()">Add new Text</button>
+                <button 
+                  class="button" 
+                  @click="addImage()">Add new Image</button>
+              </b-field>
+            </div>
           </div>
-        </div>
         
 
-      </div>
-    </section>
+        </div>
+    </div></section>
   </div>
 </template>
 
@@ -299,6 +305,7 @@ export default {
       id: '',
       data: [],
       blocks: [],
+      sheet: [],
       author: [],
       stoffe: [],
       wirkstoff: [],
@@ -396,11 +403,6 @@ export default {
         id: this.idcounter++
       })
     },
-    addWirkstoff() {
-      this.stoffe.push({
-        content: ''
-      })
-    },
     addImage() {
       this.blocks.push({ content: 'new block', type: 'image' })
     },
@@ -468,6 +470,7 @@ export default {
       const ref = fireDb.collection(this.$route.params.id).doc(this.document.id)
 
       const document = {
+        css: this.sheet,
         data: this.document,
         blocks: this.blocks,
         wirkstoffe: this.stoffe
@@ -498,63 +501,15 @@ export default {
         })
       })
 
-    let symptomCollection = []
-    let symptom = await fireDb
-      .collection('symptom')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          symptomCollection.push(doc.data().data)
-        })
-      })
-
-    let wirkstoffCollection = []
-    let wirkstoff = await fireDb
-      .collection('wirkstoff')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          wirkstoffCollection.push(doc.data().data)
-        })
-      })
-
-    let prozessCollection = []
-    let prozess = await fireDb
-      .collection('prozess')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          prozessCollection.push(doc.data().data)
-        })
-      })
-
-    let wirkstofftypCollection = []
-    let wirkstofftyp = await fireDb
-      .collection('wirkstofftyp')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          wirkstofftypCollection.push(doc.data().data)
-        })
-      })
-
     if (def.data()) {
       return {
         data: def.data().defaults,
-        author: authorCollection,
-        symptom: symptomCollection,
-        wirkstoff: wirkstoffCollection,
-        prozess: prozessCollection,
-        wirkstofftyp: wirkstofftypCollection
+        author: authorCollection
       }
     } else {
       return {
         data: [],
-        author: authorCollection,
-        symptoms: symptomCollection,
-        wirkstoff: wirkstoffCollection,
-        prozess: prozessCollection,
-        wirkstofftyp: wirkstofftypCollection
+        author: authorCollection
       }
     }
   }
